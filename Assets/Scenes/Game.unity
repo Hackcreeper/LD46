@@ -1069,6 +1069,8 @@ GameObject:
   - component: {fileID: 1106085950}
   - component: {fileID: 1106085949}
   - component: {fileID: 1106085952}
+  - component: {fileID: 1106085953}
+  - component: {fileID: 1106085954}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -1232,11 +1234,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 963194227}
-  material: {fileID: 2100000, guid: 94d7def4db87c4cdbac3546177d3b171, type: 2}
+  blueprintMaterial: {fileID: 2100000, guid: 94d7def4db87c4cdbac3546177d3b171, type: 2}
   errorMaterial: {fileID: 2100000, guid: f8b255db12d06471bbc9ac5d151eed24, type: 2}
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  ignoreBlueprintLayer:
+    serializedVersion: 2
+    m_Bits: 257
+  tunnelBlueprintPrefab: {fileID: 2988835442317851975, guid: b537c11d7d24948c997d671a0d936984,
+    type: 3}
+--- !u!114 &1106085953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106085948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d500c70b31bb489a8afae4ca7a6c60c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1106085954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106085948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0758bde3ece42548aa273bf0176c12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingPlatformPrefab: {fileID: 7927857744972486315, guid: c0edf50ab4acf4e199757a1d6e3a9a73,
+    type: 3}
 --- !u!1 &1224964088
 GameObject:
   m_ObjectHideFlags: 0
