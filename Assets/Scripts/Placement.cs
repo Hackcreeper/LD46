@@ -137,7 +137,6 @@ public class Placement : MonoBehaviour
                 continue;
             }
 
-            Debug.Log(box.name);
             active = false;
         }
 
