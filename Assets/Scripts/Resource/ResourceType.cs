@@ -6,6 +6,7 @@ namespace Resource
         Food,
         O2,
         Colonists,
-        WubbelUbbelOre
+        WubbelUbbelOre,
+        Money,
     }
 }
