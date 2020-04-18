@@ -766,7 +766,7 @@ MonoBehaviour:
         m_MethodName: Activate
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 261777052224385424, guid: 44fe6112dcfcc4307bbfdb8c3e10e18b,
+          m_ObjectArgument: {fileID: 4164998221313470567, guid: 49c71048934604a649c2beec8434f82c,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -1393,7 +1393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 898152472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1106085952}
+        m_MethodName: Activate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4164998221313470567, guid: 6f1b5aeec470847b88a938e98cb6cf9f,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &898152472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1918,7 +1930,7 @@ MonoBehaviour:
         m_MethodName: Activate
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 261777052224385424, guid: 837ca0a0d5a0645a38f7b3d95821c998,
+          m_ObjectArgument: {fileID: 3219181044188230674, guid: 75a3ef6b61cdd4d51bd88236fb110c71,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -2188,6 +2200,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a74d03f871f46dda4d3fe7aafc10885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  images:
+  - resourceType: 0
+    sprite: {fileID: 21300000, guid: f3e3845ceaae1764cab033be5501866c, type: 3}
+  - resourceType: 1
+    sprite: {fileID: 21300000, guid: 19165986b2374df4da5b7f4a4d4004bb, type: 3}
+  - resourceType: 2
+    sprite: {fileID: 21300000, guid: ef0484c60f6f231448287eb841b1db3f, type: 3}
+  - resourceType: 3
+    sprite: {fileID: 21300000, guid: 282fde38225b65647941ac0f3d140529, type: 3}
+  - resourceType: 4
+    sprite: {fileID: 21300000, guid: a996c1c90965f034ba506c44c227832a, type: 3}
+  - resourceType: 5
+    sprite: {fileID: 21300000, guid: a996c1c90965f034ba506c44c227832a, type: 3}
+  defaultImage: {fileID: 21300000, guid: f3e3845ceaae1764cab033be5501866c, type: 3}
+  popupPrefab: {fileID: 339367834908666941, guid: ff5c2c57f98e246389051dec2ece1ec0,
+    type: 3}
 --- !u!1 &1224964088
 GameObject:
   m_ObjectHideFlags: 0

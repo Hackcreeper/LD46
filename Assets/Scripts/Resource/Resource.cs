@@ -43,5 +43,10 @@ namespace Resource
         {
             _amount = Mathf.Clamp(_amount - amount, 0, Int32.MaxValue);
         }
+
+        public void IncreaseCapacity(int amount)
+        {
+            _max += amount;
+        }
     }
 }
