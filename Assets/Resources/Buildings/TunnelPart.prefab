@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6650645981426675696}
   - component: {fileID: 7707881388529721869}
   - component: {fileID: -1544495643781556494}
+  - component: {fileID: 6257916481681529366}
   m_Layer: 0
   m_Name: TunnelPart
   m_TagString: Untagged
@@ -104,5 +105,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f9b9a0f800c4149ba53603c7eb460ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6257916481681529366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047680304788377994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3f9f6225db4ab28c5e339af112a741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

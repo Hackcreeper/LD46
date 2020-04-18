@@ -6,6 +6,7 @@ namespace Buildings
     {
         public float offsetY = 0f;
         public GameObject building;
+        public int costs;
 
         public virtual Building Spawn()
         {

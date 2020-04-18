@@ -350,6 +350,7 @@ MonoBehaviour:
   offsetY: 1
   building: {fileID: 1385097131511950966, guid: a01121f36fbf44348854bd03c07ca1be,
     type: 3}
+  costs: 15
 --- !u!1 &6325414859936950860
 GameObject:
   m_ObjectHideFlags: 0

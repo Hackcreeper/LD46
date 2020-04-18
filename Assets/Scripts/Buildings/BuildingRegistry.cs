@@ -28,5 +28,10 @@ namespace Buildings
                 .Where(building => Vector3.Distance(building.transform.position, center) <= range)
                 .ToArray();
         }
+
+        public Building GetRandom()
+        {
+            return _buildings[Random.Range(0, _buildings.Count)];
+        }
     }
 }

@@ -37,7 +37,6 @@ namespace Resource
             _resources[ResourceType.Titanium].Increase(10);
             _resources[ResourceType.Food].Increase(10);
             _resources[ResourceType.O2].Increase(10);
-            _resources[ResourceType.Colonists].Increase(5); // TODO: Actually spawn these
 
             foreach (var image in images)
             {

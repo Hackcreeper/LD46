@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Buildings;
+using Resource;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,9 +17,13 @@ public class Placement : MonoBehaviour
     public LayerMask ignoreBlueprintLayer;
     
     public GameObject tunnelBlueprintPrefab;
+    public GameObject reasonWrapper;
+    public TextMeshProUGUI reasonText;
 
     private bool _active = false;
     private bool _canPlace = false;
+    private string _reason = "";
+    
     private Blueprint _blueprint;
     private Dictionary<Building, Transform> _tunnels = new Dictionary<Building, Transform>();
 
@@ -38,13 +44,18 @@ public class Placement : MonoBehaviour
 
         _active = _canPlace = false;
 
-        BuildingRegistry.Instance.Register(_blueprint.Spawn());
+        var building = _blueprint.Spawn();
+        BuildingRegistry.Instance.Register(building);
+        
+        ResourceManager.Instance.ForType(ResourceType.Titanium).Decrease(_blueprint.costs);
 
         foreach (var tunnel in _tunnels)
         {
             if (tunnel.Value.GetComponent<MeshRenderer>().enabled)
             {
-                tunnel.Value.GetComponent<Blueprint>().Spawn();
+                var spawned = tunnel.Value.GetComponent<Blueprint>().Spawn();
+                tunnel.Key.RegisterConnection(building, spawned.GetComponent<Tunnel>());
+                building.RegisterConnection(tunnel.Key, spawned.GetComponent<Tunnel>());
             }
 
             Destroy(tunnel.Value.gameObject);
@@ -63,15 +74,35 @@ public class Placement : MonoBehaviour
             return;
         }
 
-        MoveToMouse();
-        BuildTunnels();
+        _canPlace = true;
         
-        if (!_tunnels.Any(tunnel => tunnel.Value.GetComponent<MeshRenderer>().enabled))
-        {
-            _canPlace = false;
-        }
+        BuildTunnels();
+        MoveToMouse();
+        CheckResources();
         
         _blueprint.GetComponent<MeshRenderer>().material = _canPlace ? blueprintMaterial : errorMaterial;
+        RenderReason();
+    }
+
+    private void RenderReason()
+    {
+        if (_canPlace)
+        {
+            reasonWrapper.SetActive(false);
+            return;
+        }
+        
+        reasonWrapper.SetActive(true);
+        reasonText.text = _reason;
+    }
+
+    private void CheckResources()
+    {
+        if (ResourceManager.Instance.ForType(ResourceType.Titanium).Get() < _blueprint.costs)
+        {
+            _canPlace = false;
+            _reason = $"Too few resources. You need {_blueprint.costs} titanium!";
+        }
     }
 
     private void BuildTunnels()
@@ -91,6 +122,14 @@ public class Placement : MonoBehaviour
 
             PrepareTunnel(building);
         }
+
+        if (_tunnels.Any(tunnel => tunnel.Value.GetComponent<MeshRenderer>().enabled))
+        {
+            return;
+        }
+        
+        _canPlace = false;
+        _reason = "No tunnels can be built. Maybe you are too far away?";
     }
 
     private void PrepareTunnel(Building building)
@@ -160,10 +199,16 @@ public class Placement : MonoBehaviour
             );
 
             var size = _blueprint.GetComponent<BoxCollider>().bounds.extents;
-            _canPlace = !Physics.CheckBox(
+            var canPlace = !Physics.CheckBox(
                 new Vector3(blueprintTransform.transform.position.x, .6f, blueprintTransform.transform.position.z),
                 new Vector3(size.x, .5f, size.z)
             );
+
+            if (!canPlace)
+            {
+                _canPlace = false;
+                _reason = "Something is in the way.";
+            }
         }
     }
 }
