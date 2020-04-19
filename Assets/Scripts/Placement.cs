@@ -233,7 +233,7 @@ public class Placement : MonoBehaviour
 
             blueprintTransform.position = new Vector3(
                 hit.point.x,
-                _blueprint.offsetY,
+                _blueprint.offsetY + .02f,
                 hit.point.z
             );
 
