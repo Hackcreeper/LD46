@@ -80,7 +80,11 @@ public class Placement : MonoBehaviour
         MoveToMouse();
         CheckResources();
         
-        _blueprint.GetComponent<MeshRenderer>().material = _canPlace ? blueprintMaterial : errorMaterial;
+        foreach (var mesh in _blueprint.GetComponentsInChildren<MeshRenderer>())
+        {
+            mesh.material = _canPlace ? blueprintMaterial : errorMaterial;    
+        }
+        
         RenderReason();
     }
 

@@ -571,7 +571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 282fde38225b65647941ac0f3d140529, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ef8f021c06fe514d97fe90618e4bc84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   - resourceType: 4
     sprite: {fileID: 21300000, guid: a996c1c90965f034ba506c44c227832a, type: 3}
   - resourceType: 5
-    sprite: {fileID: 21300000, guid: a996c1c90965f034ba506c44c227832a, type: 3}
+    sprite: {fileID: 21300000, guid: 0ef8f021c06fe514d97fe90618e4bc84, type: 3}
   defaultImage: {fileID: 21300000, guid: f3e3845ceaae1764cab033be5501866c, type: 3}
   popupPrefab: {fileID: 339367834908666941, guid: ff5c2c57f98e246389051dec2ece1ec0,
     type: 3}

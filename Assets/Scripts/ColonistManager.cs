@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Buildings;
 using Resource;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class ColonistManager : MonoBehaviour

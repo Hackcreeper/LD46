@@ -34,7 +34,7 @@ namespace Resource
             _resources.Add(ResourceType.Colonists, new Resource(5));
             _resources.Add(ResourceType.WubbelUbbelOre, new Resource(0, true));
 
-            _resources[ResourceType.Titanium].Increase(10);
+            _resources[ResourceType.Titanium].Increase(50);
             _resources[ResourceType.Food].Increase(10);
             _resources[ResourceType.O2].Increase(10);
 
