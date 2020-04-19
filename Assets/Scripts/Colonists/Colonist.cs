@@ -77,11 +77,25 @@ namespace Colonists
 
         private void HandleWalkingState()
         {
-            
-            
+            _stateTimer -= Time.deltaTime;
+            if (_stateTimer <= 0)
+            {
+                animator.SetBool("walking", false);
+                SelectRandomState();
+
+                return;
+            }
+
+            // transform.Translate(1 * Time.deltaTime, 0, 0, Space.Self);
+
             // State: walking
             // Unit moves randomlly for 5 to 30 seconds
             // If it hits a wall or obstacle (building collider) -> rotate in random direction and try again
+        }
+
+        private void SelectRandomState()
+        {
+            // TODO
         }
 
         private void HandleWorkingState()
