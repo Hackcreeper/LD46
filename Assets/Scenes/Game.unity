@@ -2108,6 +2108,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 58d864a3-c11d-4752-b788-f2f832c76394
     m_ActionName: Player/Primary[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1106085952}
+        m_MethodName: Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e690fb92-2b5a-4e3a-aa01-928375ecc61b
+    m_ActionName: Player/Cancel[/Keyboard/escape,/Keyboard/backspace,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
