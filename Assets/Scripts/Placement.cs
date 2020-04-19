@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 
 public class Placement : MonoBehaviour
 {
+    private const float Range = 200000; // 25    
+    
     public Camera playerCamera;
 
     public Material blueprintMaterial;
@@ -34,6 +36,7 @@ public class Placement : MonoBehaviour
         _active = true;
 
         _blueprint = Instantiate(prefab).GetComponent<Blueprint>();
+        _blueprint.transform.GetChild(0).rotation = Quaternion.Euler(0, Random.Range(1, 360), 0);
     }
 
     private void Deactivate()
@@ -71,7 +74,7 @@ public class Placement : MonoBehaviour
 
         foreach (var tunnel in _tunnels)
         {
-            if (tunnel.Value.GetComponent<MeshRenderer>().enabled)
+            if (tunnel.Value.GetComponentInChildren<MeshRenderer>().enabled)
             {
                 var spawned = tunnel.Value.GetComponent<Blueprint>().Spawn();
                 tunnel.Key.RegisterConnection(building, spawned.GetComponent<Tunnel>());
@@ -148,16 +151,16 @@ public class Placement : MonoBehaviour
                 _tunnels.Add(building, Instantiate(tunnelBlueprintPrefab).transform);
             }
 
-            if (Vector3.Distance(building.transform.position, _blueprint.transform.position) > 25)
+            if (Vector3.Distance(building.transform.position, _blueprint.transform.position) > Range)
             {
-                _tunnels[building].GetComponent<MeshRenderer>().enabled = false;
+                _tunnels[building].GetComponentInChildren<MeshRenderer>().enabled = false;
                 continue;
             }
 
             PrepareTunnel(building);
         }
 
-        if (_tunnels.Any(tunnel => tunnel.Value.GetComponent<MeshRenderer>().enabled))
+        if (_tunnels.Any(tunnel => tunnel.Value.GetComponentInChildren<MeshRenderer>().enabled))
         {
             return;
         }
@@ -171,33 +174,35 @@ public class Placement : MonoBehaviour
         var tunnel = _tunnels[building];
 
         var buildingTransform = building.transform;
-        var buildingPosition = buildingTransform.position;
         var blueprintTransform = _blueprint.transform;
         var blueprintPosition = blueprintTransform.position;
 
         // Place the tunnel on the middle point between the building and blueprint
         tunnel.position = new Vector3(
-            (buildingPosition.x + blueprintPosition.x) / 2,
+            blueprintPosition.x,
             .5f,
-            (buildingPosition.z + blueprintPosition.z) / 2
+            blueprintPosition.z
         );
-
+        
+        var buildingSize = building.GetComponent<BoxCollider>().bounds.size;
+        var blueprintSize = _blueprint.GetComponent<BoxCollider>().bounds.size;
 
         // Rotate the tunnel between the blueprint and building
         tunnel.LookAt(buildingTransform);
         tunnel.localRotation = Quaternion.Euler(0, tunnel.localRotation.eulerAngles.y, 0);
 
-        // Scale it up
-        var buildingSize = building.GetComponent<BoxCollider>().bounds.size;
+        tunnel.Translate(0, 0, blueprintSize.x / 2f - .25f, Space.Self);
         
-        var distance = Vector3.Distance(building.transform.position, _blueprint.transform.position) - buildingSize.magnitude / 2;
+        // Scale
+        var distance = Vector3.Distance(building.transform.position, _blueprint.transform.position) - blueprintSize.x / 2 - buildingSize.x / 2;
         tunnel.localScale = new Vector3(1, 1, distance);
-        tunnel.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(distance * 2, 1);
+        
+        tunnel.GetComponentInChildren<MeshRenderer>().material.mainTextureScale = new Vector2(distance * 2, 1);
 
-        var tunnelExtents = tunnel.GetComponent<BoxCollider>().bounds.extents;
+        var tunnelExtents = tunnel.GetComponent<BoxCollider>().bounds;
         var checkBox = Physics.OverlapBox(
-            new Vector3(tunnel.position.x, .6f, tunnel.position.z),
-            new Vector3(tunnelExtents.x, .5f, tunnelExtents.z),
+            new Vector3(tunnelExtents.center.x, .6f, tunnelExtents.center.z),
+            new Vector3(tunnelExtents.extents.x, .5f, tunnelExtents.extents.z),
             Quaternion.identity,
             ignoreBlueprintLayer
         );
@@ -214,7 +219,7 @@ public class Placement : MonoBehaviour
         }
 
         // Check for collisions
-        tunnel.GetComponent<MeshRenderer>().enabled = active;
+        tunnel.GetComponentInChildren<MeshRenderer>().enabled = active;
     }
 
     private void MoveToMouse()

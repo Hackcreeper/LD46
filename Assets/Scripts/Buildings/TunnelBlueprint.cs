@@ -8,8 +8,8 @@ namespace Buildings
         {
             var spawned = base.Spawn();
 
-            spawned.GetComponent<MeshRenderer>().material.mainTextureScale =
-                GetComponent<MeshRenderer>().material.mainTextureScale;
+            spawned.GetComponentInChildren<MeshRenderer>().material.mainTextureScale =
+                GetComponentInChildren<MeshRenderer>().material.mainTextureScale;
             
             return spawned;
         }
