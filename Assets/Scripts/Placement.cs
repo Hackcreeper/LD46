@@ -29,10 +29,30 @@ public class Placement : MonoBehaviour
 
     public void Activate(GameObject prefab)
     {
+        Deactivate();
+        
         _active = true;
 
         _blueprint = Instantiate(prefab).GetComponent<Blueprint>();
-        _blueprint.GetComponent<MeshRenderer>().material = blueprintMaterial;
+    }
+
+    private void Deactivate()
+    {
+        _active = _canPlace = false;
+        _reason = "";
+
+        if (_blueprint)
+        {
+            Destroy(_blueprint.gameObject);
+        }
+
+        foreach (var tunnel in _tunnels)
+        {
+            Destroy(tunnel.Value.gameObject);
+        }
+        
+        _tunnels.Clear();
+        reasonWrapper.SetActive(false);
     }
 
     public void Build(InputAction.CallbackContext context)
@@ -67,6 +87,16 @@ public class Placement : MonoBehaviour
         _tunnels.Clear();
     }
 
+    public void Cancel(InputAction.CallbackContext context)
+    {
+        if (!_active)
+        {
+            return;
+        }
+        
+        Deactivate();
+    }
+    
     private void Update()
     {
         if (!_active)
@@ -80,7 +110,11 @@ public class Placement : MonoBehaviour
         MoveToMouse();
         CheckResources();
         
-        _blueprint.GetComponent<MeshRenderer>().material = _canPlace ? blueprintMaterial : errorMaterial;
+        foreach (var mesh in _blueprint.GetComponentsInChildren<MeshRenderer>())
+        {
+            mesh.material = _canPlace ? blueprintMaterial : errorMaterial;    
+        }
+        
         RenderReason();
     }
 

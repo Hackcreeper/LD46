@@ -22,7 +22,6 @@ namespace Buildings
 
         public void RemovePopup()
         {
-            Debug.Log("Remove");
             --_activePopups;
         }
     }
