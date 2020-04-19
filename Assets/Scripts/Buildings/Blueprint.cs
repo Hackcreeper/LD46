@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 namespace Buildings
@@ -16,6 +17,9 @@ namespace Buildings
             spawned.transform.position = transform1.position;
             spawned.transform.rotation = transform1.rotation;
             spawned.transform.localScale = transform1.localScale;
+
+            if (spawned.transform.childCount > 0 && transform1.childCount > 0)
+                spawned.transform.GetChild(0).rotation = transform1.GetChild(0).rotation;
 
             return spawned.GetComponent<Building>();
         }

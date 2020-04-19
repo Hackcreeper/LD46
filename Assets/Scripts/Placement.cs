@@ -36,6 +36,7 @@ public class Placement : MonoBehaviour
         _active = true;
 
         _blueprint = Instantiate(prefab).GetComponent<Blueprint>();
+        _blueprint.transform.GetChild(0).rotation = Quaternion.Euler(0, Random.Range(1, 360), 0);
     }
 
     private void Deactivate()
@@ -173,7 +174,6 @@ public class Placement : MonoBehaviour
         var tunnel = _tunnels[building];
 
         var buildingTransform = building.transform;
-        var buildingPosition = buildingTransform.position;
         var blueprintTransform = _blueprint.transform;
         var blueprintPosition = blueprintTransform.position;
 
