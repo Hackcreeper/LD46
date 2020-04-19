@@ -26,7 +26,6 @@ namespace Colonists
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-                Debug.Log("Spawing colonist!");
                 SpawnColonist();
             }
         }
@@ -34,12 +33,6 @@ namespace Colonists
         public void SpawnColonist()
         {
             var colonist = Instantiate(colonistPrefab);
-            colonist.transform.position = new Vector3(
-                Random.Range(-3f, 3f),
-                2f,
-                Random.Range(-3f, 3f)
-            );
-        
             colonist.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
             var component = colonist.GetComponent<Colonist>();
         
@@ -62,8 +55,6 @@ namespace Colonists
             var i = 0;
             while (true)
             {
-                Debug.Log($"Try {++i}");
-
                 var halfX = (buildingSize.x - 1f) / 2f;
                 var halfZ = (buildingSize.z - 1f) / 2f;
             

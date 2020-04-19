@@ -8,15 +8,17 @@ namespace Colonists
 {
     public class Colonist : MonoBehaviour
     {
-        public Action<Colonist> taskCompleted;
-        public Animator animator;
-
-        private List<Transform> _path = new List<Transform>();
         private List<Building> _checked = new List<Building>();
         private Building _currentBuilding;
+
+        private List<Transform> _path = new List<Transform>();
         private ColonistState _state = ColonistState.Walking;
 
         private float _stateTimer;
+        private Vector2? _targetPosition = null;
+        public Animator animator;
+        public LayerMask buildingMask;
+        public Action<Colonist> taskCompleted;
 
         public void SetCurrentBuilding(Building current)
         {
@@ -25,9 +27,8 @@ namespace Colonists
 
         public void SetTarget(Building building)
         {
-            Debug.Log("Going to " + building.name);
-            
-            SetState(ColonistState.Walking);
+            _currentBuilding = building;
+            SelectRandomState();
         }
 
         private void SetState(ColonistState state)
@@ -35,11 +36,15 @@ namespace Colonists
             switch (state)
             {
                 case ColonistState.Idle:
+                    _stateTimer = Random.Range(4, 15);
+                    animator.SetBool("idle", true);
                     break;
-                
+
                 case ColonistState.Working:
+                    _stateTimer = Random.Range(3, 10);
+                    animator.SetBool("working", true);
                     break;
-                
+
                 default:
                     _stateTimer = Random.Range(5, 30);
                     animator.SetBool("walking", true);
@@ -48,7 +53,7 @@ namespace Colonists
 
             _state = state;
         }
-        
+
         private void Update()
         {
             switch (_state)
@@ -56,23 +61,15 @@ namespace Colonists
                 case ColonistState.Idle:
                     HandleIdleState();
                     break;
-                
+
                 case ColonistState.Working:
                     HandleWorkingState();
                     break;
-                
+
                 default:
                     HandleWalkingState();
                     break;
             }
-            
-            // State: Idle standing
-            // Unit stands there and players the idle Animation every 2 seconds
-            // Ends after 4 - 20 seconds
-            
-            // State: Idle working
-            // Plays the idle working animation
-            // When this is finished, this state is finished
         }
 
         private void HandleWalkingState()
@@ -86,26 +83,38 @@ namespace Colonists
                 return;
             }
 
-            // transform.Translate(1 * Time.deltaTime, 0, 0, Space.Self);
+            var body = GetComponent<Rigidbody>();
+            body.MovePosition(body.position + transform.right * 1f * Time.fixedDeltaTime);
 
-            // State: walking
-            // Unit moves randomlly for 5 to 30 seconds
-            // If it hits a wall or obstacle (building collider) -> rotate in random direction and try again
+            if (Physics.Raycast(transform.position - new Vector3(0, .4f, 0), transform.right, .8f, buildingMask))
+                transform.Rotate(0, Random.Range(90, 270), 0);
         }
 
         private void SelectRandomState()
         {
-            // TODO
+            var states = new[] {ColonistState.Idle, ColonistState.Walking, ColonistState.Working};
+            
+            SetState(states[Random.Range(0, states.Length)]);
         }
 
         private void HandleWorkingState()
         {
-            
+            _stateTimer -= Time.deltaTime;
+
+            if (_stateTimer > 0) return;
+
+            animator.SetBool("working", false);
+            SelectRandomState();
         }
 
         private void HandleIdleState()
         {
-            
+            _stateTimer -= Time.deltaTime;
+
+            if (_stateTimer > 0) return;
+
+            animator.SetBool("idle", false);
+            SelectRandomState();
         }
     }
 }
