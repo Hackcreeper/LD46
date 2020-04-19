@@ -121,7 +121,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 1f88c1934991044d29246836d4be0d8e, type: 2}
 --- !u!1 &65622839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colonistPrefab: {fileID: 3645171288528683693, guid: 69994ef5a44a04c2b9b37fd17569e6e6,
     type: 3}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1154399370
 GameObject:
   m_ObjectHideFlags: 0

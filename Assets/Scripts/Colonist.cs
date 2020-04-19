@@ -19,7 +19,5 @@ public class Colonist : MonoBehaviour
     public void SetTarget(Building building)
     {
         Debug.Log("Going to " + building.name);
-
-        transform.position = new Vector3(building.transform.position.x, 0, building.transform.position.z);
     }
 }
