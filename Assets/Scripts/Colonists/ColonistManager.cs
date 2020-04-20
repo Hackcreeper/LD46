@@ -7,12 +7,19 @@ namespace Colonists
 {
     public class ColonistManager : MonoBehaviour
     {
+        public static ColonistManager Instance;
+        
         public GameObject colonistPrefab;
         public LayerMask obstacleMask;
         public LayerMask buildingMask;
 
         private readonly List<Colonist> _colonists = new List<Colonist>();
-    
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+        
         public void Start()
         {
             // spawn 5 colonists
