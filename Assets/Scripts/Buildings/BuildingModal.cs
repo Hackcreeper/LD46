@@ -38,6 +38,11 @@ namespace Buildings
 
         public void Close()
         {
+            if (_isOpen)
+            {
+                PauseModal.Handled = true;
+            }
+            
             gameObject.SetActive(false);
             _isOpen = false;
         }

@@ -95,7 +95,8 @@ public class Placement : MonoBehaviour
         {
             return;
         }
-        
+
+        PauseModal.Handled = true;
         Deactivate();
     }
     

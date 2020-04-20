@@ -22,6 +22,11 @@ namespace Trading
 
         public void Close()
         {
+            if (_open)
+            {
+                PauseModal.Handled = true;
+            }
+            
             _open = false;
             gameObject.SetActive(false);
         }
