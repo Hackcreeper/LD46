@@ -42,8 +42,12 @@ namespace Trading
 
         public void Close()
         {
-            gameObject.SetActive(false);
+            if (gameObject.activeSelf)
+            {
+                PauseModal.Handled = true;
+            }
             
+            gameObject.SetActive(false);   
             _buyTitanium = _buyColonists = 0;
         }
 

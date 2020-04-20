@@ -511,13 +511,13 @@ MonoBehaviour:
   resourceType: 2
   amounts:
   - colonists: 1
-    amount: 1
-    interval: 2
+    amount: 2
+    interval: 1
   - colonists: 2
     amount: 3
-    interval: 2
-  - colonists: 3
-    amount: 3
+    interval: 1
+  - colonists: 1
+    amount: 4
     interval: 1
 --- !u!114 &-1336084103028220784
 MonoBehaviour:
@@ -534,11 +534,11 @@ MonoBehaviour:
   resourceType: 1
   amounts:
   - colonists: 1
-    amount: 1
+    amount: 2
     interval: 5
   - colonists: 2
     amount: 2
-    interval: 6
+    interval: 2
   - colonists: 3
     amount: 2
-    interval: 4
+    interval: 1

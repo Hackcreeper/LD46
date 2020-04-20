@@ -4,6 +4,7 @@ using Colonists;
 using Effects;
 using Resource;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Buildings
 {
@@ -54,7 +55,7 @@ namespace Buildings
 
         public void OnMouseDown()
         {
-            if (!hasModal)
+            if (!hasModal || EventSystem.current.IsPointerOverGameObject())
             {
                 return;
             }
