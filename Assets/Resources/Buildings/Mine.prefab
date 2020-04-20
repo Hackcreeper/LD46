@@ -196,7 +196,7 @@ MonoBehaviour:
   buildingType: 0
   maxColonists: 4
   title: Mine
-  description: Produces Wubbelubbel ore. Can hold up to 3 colonists.
+  description: Produces Wubbelubbel ore. Can hold up to 4 colonists.
   hasModal: 1
 --- !u!114 &48817275348343358
 MonoBehaviour:

@@ -43,7 +43,7 @@ namespace Resource
         
         public bool Decrease(int amount)
         {
-            if (_amount - amount > 0)
+            if (_amount - amount >= 0)
             {
                 _amount -= amount;
                 return true;
