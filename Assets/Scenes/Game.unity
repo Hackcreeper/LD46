@@ -2586,7 +2586,7 @@ MonoBehaviour:
 
 
     <b>2.</b>
-    Every two minutes a supply ship from earth lands on Mars. You can sell your Wubbelubbel
+    Every 100 seconds a supply ship from earth lands on Mars. You can sell your Wubbelubbel
     ore for money. When the ship is on earth, you can request additional resources
     and colonists in exchange for money.
 
@@ -12297,8 +12297,6 @@ MonoBehaviour:
   gardenArrow: {fileID: 1081863135}
   gardenButton: {fileID: 1098731864}
   buildingModalArrow: {fileID: 612294543}
-  mineButton: {fileID: 0}
-  mineArrow: {fileID: 0}
   buildingButtons:
   - {fileID: 1098731864}
   - {fileID: 606848228}

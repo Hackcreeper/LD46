@@ -8,7 +8,7 @@ namespace Trading
     {
         public static Trader Instance;
 
-        private float _timeUntilTrade = 120;
+        private float _timeUntilTrade = 100;
         private float _timeUntilTradeEnds;
         
         private TradeState _state = TradeState.OnEarth;
@@ -133,7 +133,7 @@ namespace Trading
         public void RocketIsGone()
         {
             SetState(TradeState.OnEarth);
-            _timeUntilTrade = 120f;
+            _timeUntilTrade = 100f;
         }
 
         public void Reserve(int titanium, int colonists)
