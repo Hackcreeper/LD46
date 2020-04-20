@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Buildings;
 using Resource;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Colonists
@@ -11,7 +12,7 @@ namespace Colonists
     {
         private const float O2Interval = 3;
         private const float FoodInterval = 10;
-        
+
         private List<Building> _checked = new List<Building>();
         private Building _currentBuilding;
 
@@ -22,7 +23,10 @@ namespace Colonists
         private Vector2? _targetPosition = null;
         private float _o2Timer = O2Interval;
         private float _foodTimer = FoodInterval;
-        
+
+        private int _missingO2Intervals = 0;
+        private int _missingFoodIntervals = 0;
+
         public Animator animator;
         public LayerMask buildingMask;
         public Action<Colonist> taskCompleted;
@@ -68,13 +72,47 @@ namespace Colonists
 
             if (_o2Timer <= 0)
             {
-                ResourceManager.Instance.ForType(ResourceType.O2).Decrease(1);
+                if (!ResourceManager.Instance.ForType(ResourceType.O2).Decrease(1))
+                {
+                    _missingO2Intervals++;
+                    MissingResources.Instance.ReportO2();
+                }
+                else
+                {
+                    MissingResources.Instance.ClearReportO2(_missingO2Intervals);
+                    _missingO2Intervals = 0;
+                }
+
                 _o2Timer = O2Interval;
             }
-            
+
             if (_foodTimer <= 0)
             {
-                ResourceManager.Instance.ForType(ResourceType.Food).Decrease(1);
+                if (!ResourceManager.Instance.ForType(ResourceType.Food).Decrease(1))
+                {
+                    _missingFoodIntervals++;
+                    MissingResources.Instance.ReportFood();
+                }
+                else
+                {
+                    MissingResources.Instance.ClearReportFood(_missingFoodIntervals);
+                    _missingFoodIntervals = 0;
+                }
+
+                if (_missingFoodIntervals > 3)
+                {
+                    MissingResources.Instance.Died("starvation", _missingO2Intervals, _missingFoodIntervals);
+                    Die();
+                    return;
+                }
+
+                if (_missingO2Intervals > 20)
+                {
+                    MissingResources.Instance.Died("suffocation", _missingO2Intervals, _missingFoodIntervals);
+                    Die();
+                    return;
+                }
+
                 _foodTimer = FoodInterval;
             }
 
@@ -91,6 +129,19 @@ namespace Colonists
                 default:
                     HandleWalkingState();
                     break;
+            }
+        }
+
+        private void Die()
+        {
+            _currentBuilding.RemoveColonist(this);
+            ResourceManager.Instance.ForType(ResourceType.Colonists).Decrease(1);
+            
+            Destroy(gameObject);
+            
+            if (ResourceManager.Instance.ForType(ResourceType.Colonists).Get() == 0)
+            {
+                SceneManager.LoadScene("GameOver");
             }
         }
 
@@ -115,7 +166,7 @@ namespace Colonists
         private void SelectRandomState()
         {
             var states = new[] {ColonistState.Idle, ColonistState.Walking, ColonistState.Working};
-            
+
             SetState(states[Random.Range(0, states.Length)]);
         }
 
