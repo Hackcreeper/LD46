@@ -11,11 +11,13 @@ public class MissingResources : MonoBehaviour
     public GameObject suffocatingWarning;
     public GameObject starvingWarning;
     public GameObject diedWarning;
+    public GameObject energyWarning;
     
     public TextMeshProUGUI diedText;
     
     private int _reportedO2 = 0;
     private int _reportedFood = 0;
+    private int _reportedEnergy = 0;
 
     private bool _someoneDied;
     private float _deadTimer;
@@ -39,6 +41,13 @@ public class MissingResources : MonoBehaviour
         starvingWarning.SetActive(true);
     }
 
+    public void ReportEnergy()
+    {
+        _reportedEnergy++;
+        
+        energyWarning.SetActive(true);
+    }
+
     public void ClearReportO2(int amount)
     {
         _reportedO2 -= amount;
@@ -54,6 +63,13 @@ public class MissingResources : MonoBehaviour
         _reportedFood -= amount;
         
         starvingWarning.SetActive(false);
+    }
+
+    public void ClearReportEnergy()
+    {
+        _reportedEnergy -= 1;
+        
+        energyWarning.SetActive(false);
     }
 
     public void Died(string reason, int o2, int food)

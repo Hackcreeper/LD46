@@ -18,10 +18,15 @@ namespace Effects
     {
         public ResourceType resourceType;
         public ProduceAmount[] amounts;
+        public bool requiresDaylight;
+        public int requiredEnergy;
+        public int requiredEnergyInterval;
         
         private Building _building;
         private float _timer = 0f;
+        private float _energyTimer = 0f;
         private bool _active = false;
+        private bool _noEnergy = false;
 
         public void SetBuilding(Building building)
         {
@@ -52,13 +57,38 @@ namespace Effects
 
         private void Update()
         {
-            if (!_active)
+            if (!_active || (requiresDaylight && !DayNight.Instance.IsDay()))
             {
                 return;
             }
             
             _timer -= Time.deltaTime;
-            if (_timer > 0)
+            _energyTimer -= Time.deltaTime;
+
+            if (_energyTimer <= 0)
+            {
+                if (!ResourceManager.Instance.ForType(ResourceType.Energy).Decrease(requiredEnergy))
+                {
+                    if (!_noEnergy)
+                    {
+                        MissingResources.Instance.ReportEnergy();
+                    }
+                    
+                    _noEnergy = true;
+                }
+                else
+                {
+                    if (_noEnergy)
+                    {
+                        MissingResources.Instance.ClearReportEnergy();
+                    }
+                    _noEnergy = false;
+                }
+
+                _energyTimer = requiredEnergyInterval;
+            }
+            
+            if (_timer > 0 || _noEnergy)
             {
                 return;
             }
