@@ -9,7 +9,7 @@ namespace Trading
     {
         public static Trader Instance;
 
-        private float _timeUntilTrade = 15;
+        private float _timeUntilTrade = 120;
         private float _timeUntilTradeEnds;
         
         private TradeState _state = TradeState.OnEarth;
@@ -98,6 +98,16 @@ namespace Trading
                     {
                         ColonistManager.Instance.SpawnColonist();
                     }
+
+                    if (_reservedTitanium > 0)
+                    {
+                        ResourceManager.Instance.SpawnPopup(Game.Instance.GetLandingPlatform()).Set(ResourceType.Titanium, _reservedTitanium);
+                    }
+                    
+                    if (_reservedColonists > 0)
+                    {
+                        ResourceManager.Instance.SpawnPopup(Game.Instance.GetLandingPlatform()).Set(ResourceType.Colonists, _reservedColonists);
+                    }
                     
                     _timeUntilTradeEnds = 45f;
                     _reservedColonists = 0;
@@ -129,5 +139,7 @@ namespace Trading
         }
 
         public int GetReservedColonists() => _reservedColonists;
+        
+        public int GetReservedTitanium() => _reservedTitanium;
     }
 }

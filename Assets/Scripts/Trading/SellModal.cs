@@ -2,15 +2,17 @@ using System;
 using Resource;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Trading
 {
     public class SellModal : MonoBehaviour
     {
         public TextMeshProUGUI description;
+        public Button confirmButton;
 
         private bool _open;
-        
+
         public void Open()
         {
             gameObject.SetActive(true);
@@ -34,6 +36,8 @@ namespace Trading
             var totalMoney = totalWubbel * 20;
             
             description.text = $"Sell {totalWubbel} wubbelubbel ore for\n<b>{totalMoney}</b> money?";
+
+            confirmButton.interactable = totalWubbel > 0;
         }
 
         public void Sell()

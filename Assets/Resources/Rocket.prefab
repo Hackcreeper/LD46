@@ -19070,7 +19070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &119595561670712793
 Transform:
   m_ObjectHideFlags: 0
@@ -19118,6 +19118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 568542849}
+  meshRenderer: {fileID: 7116384665980096409}
 --- !u!1 &5451682271817616647
 GameObject:
   m_ObjectHideFlags: 0
@@ -28780,6 +28781,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 9202fd1f9655047958424e3a8a4e9a78, type: 2}
+    - target: {fileID: -1504981713932161579, guid: f89c28e23acfaaa4ea13f5ed7177fa1f,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: f89c28e23acfaaa4ea13f5ed7177fa1f,
         type: 3}
       propertyPath: m_Name
@@ -28787,6 +28793,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f89c28e23acfaaa4ea13f5ed7177fa1f, type: 3}
+--- !u!23 &7116384665980096409 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: f89c28e23acfaaa4ea13f5ed7177fa1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 711358994775188044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5523090938286770518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f89c28e23acfaaa4ea13f5ed7177fa1f,

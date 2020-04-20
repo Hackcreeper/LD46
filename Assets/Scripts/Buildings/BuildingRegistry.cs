@@ -33,5 +33,17 @@ namespace Buildings
         {
             return _buildings[Random.Range(0, _buildings.Count)];
         }
+
+        public Building GetRandomSleepingQuarter()
+        {
+            var quarters = _buildings.Where(building => building.buildingType == BuildingType.SleepQuarter).ToArray();
+
+            if (quarters.Length == 0)
+            {
+                return Game.Instance.GetLandingPlatform();
+            }
+
+            return quarters[Random.Range(0, quarters.Length)];
+        }
     }
 }
