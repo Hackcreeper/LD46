@@ -1,4 +1,3 @@
-using System;
 using Resource;
 using TMPro;
 using UnityEngine;
@@ -33,7 +32,7 @@ namespace Trading
             }
             
             var totalWubbel = ResourceManager.Instance.ForType(ResourceType.WubbelUbbelOre).Get();
-            var totalMoney = totalWubbel * 20;
+            var totalMoney = totalWubbel * 15;
             
             description.text = $"Sell {totalWubbel} wubbelubbel ore for\n<b>{totalMoney}</b> money?";
 
@@ -43,7 +42,7 @@ namespace Trading
         public void Sell()
         {
             var totalWubbel = ResourceManager.Instance.ForType(ResourceType.WubbelUbbelOre).Get();
-            var totalMoney = totalWubbel * 20;
+            var totalMoney = totalWubbel * 15;
 
             ResourceManager.Instance.ForType(ResourceType.WubbelUbbelOre).Decrease(totalWubbel);
             ResourceManager.Instance.ForType(ResourceType.Money).Increase(totalMoney);

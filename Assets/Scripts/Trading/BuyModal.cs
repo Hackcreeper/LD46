@@ -8,8 +8,8 @@ namespace Trading
 {
     public class BuyModal : MonoBehaviour
     {
-        private const int TitaniumCosts = 10;
-        private const int ColonistsCosts = 1; // 200
+        private const int TitaniumCosts = 8;
+        private const int ColonistsCosts = 900;
 
         private int _buyTitanium;
         private int _buyColonists;

@@ -87,6 +87,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9b9a0f800c4149ba53603c7eb460ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingType: 0
+  maxColonists: 4
+  title: Mine
+  description: Produces Wubbelubbel ore. Can hold up to 3 colonists.
+  hasModal: 1
 --- !u!114 &48817275348343358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,8 +105,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 4
-  interval: 8
-  amount: 2
+  amounts:
+  - colonists: 1
+    amount: 1
+    interval: 8
+  - colonists: 2
+    amount: 2
+    interval: 8
+  - colonists: 3
+    amount: 2
+    interval: 6
+  - colonists: 4
+    amount: 3
+    interval: 4
 --- !u!1001 &7471591640917751979
 PrefabInstance:
   m_ObjectHideFlags: 0

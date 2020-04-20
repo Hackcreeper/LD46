@@ -60,6 +60,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 1
+  maxColonists: 0
+  title: 
+  description: 
 --- !u!114 &-4896322100841842443
 MonoBehaviour:
   m_ObjectHideFlags: 0

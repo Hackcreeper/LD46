@@ -464,6 +464,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 2
+  maxColonists: 3
+  title: Garden
+  description: Produces O2 and food. Can hold up to 3 colonists!
+  hasModal: 1
 --- !u!114 &7890859245180774031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,8 +509,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 2
-  interval: 2
-  amount: 3
+  amounts:
+  - colonists: 1
+    amount: 1
+    interval: 2
+  - colonists: 2
+    amount: 3
+    interval: 2
+  - colonists: 3
+    amount: 3
+    interval: 1
 --- !u!114 &-1336084103028220784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,5 +532,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
-  interval: 6
-  amount: 2
+  amounts:
+  - colonists: 1
+    amount: 1
+    interval: 5
+  - colonists: 2
+    amount: 2
+    interval: 6
+  - colonists: 3
+    amount: 2
+    interval: 4

@@ -8,7 +8,7 @@ namespace Effects
         public ResourceType resourceType;
         public int amount;
 
-        public void Start()
+        public void Awake()
         {
             ResourceManager.Instance.ForType(resourceType).IncreaseCapacity(amount);
         }

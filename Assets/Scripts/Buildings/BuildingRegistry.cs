@@ -8,6 +8,8 @@ namespace Buildings
     {
         public static BuildingRegistry Instance;
 
+        public BuildingModal buildingModal;
+
         private readonly List<Building> _buildings = new List<Building>();
 
         private void Awake()
@@ -44,6 +46,16 @@ namespace Buildings
             }
 
             return quarters[Random.Range(0, quarters.Length)];
+        }
+
+        public void OpenModal(Building building)
+        {
+            if (buildingModal.IsOpen())
+            {
+                return;
+            }
+            
+            buildingModal.Open(building);
         }
     }
 }
