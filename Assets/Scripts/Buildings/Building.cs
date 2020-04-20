@@ -103,5 +103,15 @@ namespace Buildings
                 producer.SetColonists();
             }
         }
+
+        public void RemoveColonist(Colonist colonist)
+        {
+            _colonists.Remove(colonist);
+            
+            foreach (var producer in _producer)
+            {
+                producer.SetColonists();
+            }
+        }
     }
 }

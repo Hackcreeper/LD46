@@ -41,9 +41,16 @@ namespace Resource
             _amount = Mathf.Clamp(_amount + amount, 0, _max);
         }
         
-        public void Decrease(int amount)
+        public bool Decrease(int amount)
         {
+            if (_amount - amount > 0)
+            {
+                _amount -= amount;
+                return true;
+            }
+            
             _amount = Mathf.Clamp(_amount - amount, 0, Int32.MaxValue);
+            return false;
         }
 
         public void IncreaseCapacity(int amount)
