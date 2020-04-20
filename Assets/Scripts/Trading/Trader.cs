@@ -23,6 +23,11 @@ namespace Trading
     
         private void Update()
         {
+            if (Tutorial.Instance.IsActive())
+            {
+                return;
+            }
+            
             switch (_state)
             {
                 case TradeState.OnEarth:

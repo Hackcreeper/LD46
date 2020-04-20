@@ -36,6 +36,11 @@ namespace Trading
 
         public void Open()
         {
+            if (Tutorial.Instance.IsActive())
+            {
+                return;
+            }
+            
             gameObject.SetActive(true);
             Recalculate();
         }

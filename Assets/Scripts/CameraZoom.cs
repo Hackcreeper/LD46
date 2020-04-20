@@ -23,7 +23,7 @@ public class CameraZoom : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var min = 0; // -10f / 20f * Speed
+        var min = -20f; // -10f / 20f * Speed
         var max = 35f / 20f * Speed;
 
         _zoomLevel = Mathf.Clamp(_zoomLevel + _velocity, min, max);

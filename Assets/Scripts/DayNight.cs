@@ -15,6 +15,11 @@ public class DayNight : MonoBehaviour
 
     private void Update()
     {
+        if (Tutorial.Instance.IsActive())
+        {
+            return;
+        }
+        
         _rotation += Time.deltaTime / 1.5f * _speed;
         if (_rotation >= 360f)
         {

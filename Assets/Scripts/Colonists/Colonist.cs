@@ -67,53 +67,56 @@ namespace Colonists
 
         private void Update()
         {
-            _o2Timer -= Time.deltaTime;
-            _foodTimer -= Time.deltaTime;
-
-            if (_o2Timer <= 0)
+            if (!Tutorial.Instance.IsActive())
             {
-                if (!ResourceManager.Instance.ForType(ResourceType.O2).Decrease(1))
+                _o2Timer -= Time.deltaTime;
+                _foodTimer -= Time.deltaTime;
+
+                if (_o2Timer <= 0)
                 {
-                    _missingO2Intervals++;
-                    MissingResources.Instance.ReportO2();
-                }
-                else
-                {
-                    MissingResources.Instance.ClearReportO2(_missingO2Intervals);
-                    _missingO2Intervals = 0;
+                    if (!ResourceManager.Instance.ForType(ResourceType.O2).Decrease(1))
+                    {
+                        _missingO2Intervals++;
+                        MissingResources.Instance.ReportO2();
+                    }
+                    else
+                    {
+                        MissingResources.Instance.ClearReportO2(_missingO2Intervals);
+                        _missingO2Intervals = 0;
+                    }
+
+                    _o2Timer = O2Interval;
                 }
 
-                _o2Timer = O2Interval;
-            }
-
-            if (_foodTimer <= 0)
-            {
-                if (!ResourceManager.Instance.ForType(ResourceType.Food).Decrease(1))
+                if (_foodTimer <= 0)
                 {
-                    _missingFoodIntervals++;
-                    MissingResources.Instance.ReportFood();
-                }
-                else
-                {
-                    MissingResources.Instance.ClearReportFood(_missingFoodIntervals);
-                    _missingFoodIntervals = 0;
-                }
+                    if (!ResourceManager.Instance.ForType(ResourceType.Food).Decrease(1))
+                    {
+                        _missingFoodIntervals++;
+                        MissingResources.Instance.ReportFood();
+                    }
+                    else
+                    {
+                        MissingResources.Instance.ClearReportFood(_missingFoodIntervals);
+                        _missingFoodIntervals = 0;
+                    }
 
-                if (_missingFoodIntervals > 3)
-                {
-                    MissingResources.Instance.Died("starvation", _missingO2Intervals, _missingFoodIntervals);
-                    Die();
-                    return;
-                }
+                    if (_missingFoodIntervals > 3)
+                    {
+                        MissingResources.Instance.Died("starvation", _missingO2Intervals, _missingFoodIntervals);
+                        Die();
+                        return;
+                    }
 
-                if (_missingO2Intervals > 20)
-                {
-                    MissingResources.Instance.Died("suffocation", _missingO2Intervals, _missingFoodIntervals);
-                    Die();
-                    return;
-                }
+                    if (_missingO2Intervals > 20)
+                    {
+                        MissingResources.Instance.Died("suffocation", _missingO2Intervals, _missingFoodIntervals);
+                        Die();
+                        return;
+                    }
 
-                _foodTimer = FoodInterval;
+                    _foodTimer = FoodInterval;
+                }
             }
 
             switch (_state)

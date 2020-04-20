@@ -10,7 +10,8 @@ namespace Buildings
 {
     public class Building : MonoBehaviour
     {
-        private static bool _isFirst = true;
+        private static bool _isFirstSleepingQuarter = true;
+        private static bool _isFirstGarden = true;
         
         public BuildingType buildingType;
         public int maxColonists;
@@ -32,7 +33,7 @@ namespace Buildings
                 producer.SetColonists();
             }
             
-            if (buildingType == BuildingType.SleepQuarter && _isFirst)
+            if (buildingType == BuildingType.SleepQuarter && _isFirstSleepingQuarter)
             {
                 ColonistManager.Instance.SpawnColonist();
                 ColonistManager.Instance.SpawnColonist();
@@ -40,7 +41,16 @@ namespace Buildings
                 ColonistManager.Instance.SpawnColonist();
 
                 ResourceManager.Instance.SpawnPopup(this).Set(ResourceType.Colonists, 4);
-                _isFirst = false;
+                Tutorial.Instance.FinishSleepingQuarterStep();
+                
+                _isFirstSleepingQuarter = false;
+            }
+
+            if (buildingType == BuildingType.Garden && _isFirstGarden)
+            {
+                Tutorial.Instance.FinishGardenStep();
+                _isFirstGarden = false;
+                maxColonists = 2;
             }
         }
 
@@ -103,6 +113,12 @@ namespace Buildings
             {
                 producer.SetColonists();
             }
+
+            if (Tutorial.Instance.CanOpenGarden() && _colonists.Count == 2)
+            {
+                Tutorial.Instance.FinishAssignGardenStep();
+                maxColonists = 3;
+            } 
         }
 
         public void RemoveColonist(Colonist colonist)

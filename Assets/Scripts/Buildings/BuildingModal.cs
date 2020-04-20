@@ -23,6 +23,19 @@ namespace Buildings
 
         public void Open(Building building)
         {
+            if (Tutorial.Instance.IsActive())
+            {
+                if (building.buildingType != BuildingType.Garden)
+                {
+                    return;
+                }
+
+                if (!Tutorial.Instance.CanOpenGarden())
+                {
+                    return;   
+                }
+            }
+            
             _building = building;
             _isOpen = true;
 
