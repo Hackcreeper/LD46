@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Buildings;
-using Colonists;
 using Resource;
 using TMPro;
-using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
