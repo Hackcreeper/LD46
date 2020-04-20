@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 7197206556881105165}
   - component: {fileID: 4143440730245756674}
   - component: {fileID: -1336084103028220784}
+  - component: {fileID: 6953702360833838702}
   m_Layer: 0
   m_Name: Garden
   m_TagString: Untagged
@@ -542,3 +543,17 @@ MonoBehaviour:
   - colonists: 3
     amount: 2
     interval: 1
+--- !u!114 &6953702360833838702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927857744972486315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e80b7e57b224d478d6da455b709086d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 2
+  amount: 15

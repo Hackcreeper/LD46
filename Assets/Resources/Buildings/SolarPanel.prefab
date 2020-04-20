@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7761026318428648225}
   - component: {fileID: 1719726634387834674}
   - component: {fileID: -1138372758007432349}
+  - component: {fileID: -2810729315110393120}
   m_Layer: 0
   m_Name: SolarPanel
   m_TagString: Untagged
@@ -63,6 +64,23 @@ MonoBehaviour:
   title: Solar Panel
   description: Produces energy on daylight
   hasModal: 0
+--- !u!114 &-2810729315110393120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927857744972486315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a8829e2fbe487a9129186e69da2984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 6
+  amounts:
+  - colonists: 0
+    amount: 1
+    interval: 2
 --- !u!1001 &4311772537947656154
 PrefabInstance:
   m_ObjectHideFlags: 0

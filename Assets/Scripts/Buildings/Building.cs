@@ -29,6 +29,7 @@ namespace Buildings
             foreach (var producer in _producer)
             {
                 producer.SetBuilding(this);
+                producer.SetColonists();
             }
             
             if (buildingType == BuildingType.SleepQuarter && _isFirst)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4894872624945452519}
   - component: {fileID: 4577648049575879156}
   - component: {fileID: 3902661698723346489}
+  - component: {fileID: 895489564615879391}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -63,6 +64,20 @@ MonoBehaviour:
   title: 
   description: 
   hasModal: 0
+--- !u!114 &895489564615879391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070992137964220525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6776b03fe4a74925bd58913333839e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 6
+  amount: 20
 --- !u!1001 &4823064197230993983
 PrefabInstance:
   m_ObjectHideFlags: 0
