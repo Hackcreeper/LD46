@@ -30,7 +30,7 @@ namespace Effects
         
         public void SetColonists()
         {
-            if (_building.GetAssignedColonists() == 0)
+            if (GetAmount().amount == 0)
             {
                 _active = false;
                 return;

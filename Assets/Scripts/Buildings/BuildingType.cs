@@ -6,6 +6,8 @@ namespace Buildings
         SleepQuarter,
         Garden,
         LandingPlatform,
-        Tunnel
+        Tunnel,
+        SolarPanel,
+        Battery
     }
 }

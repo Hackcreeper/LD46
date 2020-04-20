@@ -33,6 +33,7 @@ namespace Resource
             _resources.Add(ResourceType.O2, new Resource(0));
             _resources.Add(ResourceType.Colonists, new Resource(0));
             _resources.Add(ResourceType.WubbelUbbelOre, new Resource(0, true));
+            _resources.Add(ResourceType.Energy, new Resource(0));
 
             _resources[ResourceType.Titanium].Increase(350);
             

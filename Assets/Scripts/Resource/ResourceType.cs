@@ -8,5 +8,6 @@ namespace Resource
         Colonists,
         WubbelUbbelOre,
         Money,
+        Energy
     }
 }

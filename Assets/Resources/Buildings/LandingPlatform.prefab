@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 7761026318428648225}
   - component: {fileID: 1719726634387834674}
   - component: {fileID: -1138372758007432349}
+  - component: {fileID: 7880217307850354875}
+  - component: {fileID: 7146535155337226460}
+  - component: {fileID: -7029917305118816271}
   m_Layer: 0
   m_Name: LandingPlatform
   m_TagString: Untagged
@@ -63,6 +66,54 @@ MonoBehaviour:
   title: 
   description: 
   hasModal: 0
+<<<<<<< HEAD
+=======
+--- !u!114 &7880217307850354875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927857744972486315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6776b03fe4a74925bd58913333839e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 6
+  amount: 20
+--- !u!114 &7146535155337226460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927857744972486315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a8829e2fbe487a9129186e69da2984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 6
+  amounts:
+  - colonists: 0
+    amount: 1
+    interval: 2
+--- !u!114 &-7029917305118816271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927857744972486315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e80b7e57b224d478d6da455b709086d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 6
+  amount: 20
+>>>>>>> origin/master
 --- !u!1001 &2063883246414054799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +121,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7761026318428648225}
     m_Modifications:
+    - target: {fileID: -6685938217219443028, guid: 923a6be62da82ab40b4fad7136076898,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11db547d9d5ba40759382523e6a750d9, type: 2}
+    - target: {fileID: -6685938217219443028, guid: 923a6be62da82ab40b4fad7136076898,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e9f8b988e6e64070ad2735f945c906c, type: 2}
     - target: {fileID: -5862777125024813162, guid: 923a6be62da82ab40b4fad7136076898,
         type: 3}
       propertyPath: m_IsActive
@@ -170,6 +231,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f2f61f6af95624223a47471ada291022, type: 2}
+    - target: {fileID: 4063835366044962077, guid: 923a6be62da82ab40b4fad7136076898,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 783ccc83130d748e2be826dca4651b8d, type: 2}
+    - target: {fileID: 4063835366044962077, guid: 923a6be62da82ab40b4fad7136076898,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce6d54db6923342189ee92f41f23ac48, type: 2}
+    - target: {fileID: 4063835366044962077, guid: 923a6be62da82ab40b4fad7136076898,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: f69283dd0341d4f528bf6a0826cf5bac, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923a6be62da82ab40b4fad7136076898, type: 3}
 --- !u!4 &6475848808100687509 stripped
