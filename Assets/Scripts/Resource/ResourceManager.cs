@@ -66,7 +66,7 @@ namespace Resource
             var height = building.AddPopup();
 
             var popup = Instantiate(popupPrefab, building.transform);
-            popup.transform.localPosition = new Vector3(0, 2.5f, height);
+            popup.transform.localPosition = new Vector3(0, .4f, height);
 
             var resourcePopup = popup.GetComponent<ResourcePopup>();
             resourcePopup.onDeath = () => building.RemovePopup();

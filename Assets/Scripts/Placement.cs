@@ -76,9 +76,7 @@ public class Placement : MonoBehaviour
         {
             if (tunnel.Value.GetComponentInChildren<MeshRenderer>().enabled)
             {
-                var spawned = tunnel.Value.GetComponent<Blueprint>().Spawn();
-                tunnel.Key.RegisterConnection(building, spawned.GetComponent<Tunnel>());
-                building.RegisterConnection(tunnel.Key, spawned.GetComponent<Tunnel>());
+                tunnel.Value.GetComponent<Blueprint>().Spawn();
             }
 
             Destroy(tunnel.Value.gameObject);

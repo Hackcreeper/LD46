@@ -22,6 +22,10 @@ namespace Trading
         public TextMeshProUGUI colonistAmountCostsText;
         public TextMeshProUGUI colonistSingleCostsText;
 
+        public GameObject reservedBox;
+        public TextMeshProUGUI titaniumReservedText;
+        public TextMeshProUGUI colonistReservedText;
+
         public TextMeshProUGUI errorText;
         public Button buyButton;
 
@@ -101,6 +105,10 @@ namespace Trading
             errorText.gameObject.SetActive(hasError);
 
             buyButton.interactable = !hasError && totalPrice > 0;
+
+            reservedBox.SetActive(Trader.Instance.GetReservedColonists() > 0 || Trader.Instance.GetReservedTitanium() > 0);
+            titaniumReservedText.text = Trader.Instance.GetReservedTitanium().ToString();
+            colonistReservedText.text = Trader.Instance.GetReservedColonists().ToString();
         }
 
         public void PlaceOrder()

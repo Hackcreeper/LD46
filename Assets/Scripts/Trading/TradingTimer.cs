@@ -1,4 +1,3 @@
-using Resource;
 using TMPro;
 using UnityEngine;
 
@@ -9,8 +8,10 @@ namespace Trading
         public TextMeshProUGUI timer;
         public GameObject requestButton;
         public GameObject tradeButton;
+        public TextMeshProUGUI timerLabel;
 
         public SellModal sellModal;
+        public BuyModal buyModal;
 
         private void Update()
         {
@@ -37,8 +38,9 @@ namespace Trading
         private void HandleGoing()
         {
             sellModal.Close();
-            
-            timer.text = "Returning to earth";
+
+            timerLabel.text = "Supply ship is returning to earth";
+            timer.text = "";
             timer.color = Color.black;
             
             tradeButton.gameObject.SetActive(false);
@@ -48,6 +50,8 @@ namespace Trading
         {
             var remainingTimeUntilTradeEnds = Trader.Instance.GetRemainingTimeUntilTradeEnds();
             
+            timerLabel.text = "Seconds until supply ship departure";
+            
             timer.text = ((int) remainingTimeUntilTradeEnds).ToString();
             timer.color = remainingTimeUntilTradeEnds <= 10 ? Color.red : Color.black;
             
@@ -56,7 +60,11 @@ namespace Trading
 
         private void HandleLanding()
         {
-            timer.text = "Landing";
+            buyModal.Close();
+            
+            timerLabel.text = "Supply ship is landing";
+
+            timer.text = "";
             timer.color = Color.red;
 
             requestButton.gameObject.SetActive(false);
@@ -66,6 +74,8 @@ namespace Trading
         {
             var remainingTime = Trader.Instance.GetRemainingTime();
 
+            timerLabel.text = "Seconds until supply ship arrival";
+            
             timer.text = ((int) remainingTime).ToString();
             timer.color = remainingTime <= 10 ? Color.red : Color.black;
 

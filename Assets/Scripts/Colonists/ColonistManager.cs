@@ -22,21 +22,20 @@ namespace Colonists
         
         public void Start()
         {
-            // spawn 5 colonists
             for (var i = 0; i < 5; i++)
-            {
-                // SpawnColonist();
-            }
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.K))
             {
                 SpawnColonist();
             }
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SpawnColonist();
+            }
+        }
+        
         public void SpawnColonist()
         {
             var colonist = Instantiate(colonistPrefab);
@@ -54,21 +53,20 @@ namespace Colonists
 
         private void AssignRandomTaskTo(Colonist colonist)
         {
-            var building = BuildingRegistry.Instance.GetRandom();
+            var building = BuildingRegistry.Instance.GetRandomSleepingQuarter();
             colonist.SetTarget(building);
 
-            var buildingSize = building.GetComponent<BoxCollider>().bounds.size;
+            var buildingSize = building.GetComponent<BoxCollider>().bounds.extents;
 
-            var i = 0;
             while (true)
             {
-                var halfX = (buildingSize.x - 1f) / 2f;
-                var halfZ = (buildingSize.z - 1f) / 2f;
+                var halfX = (buildingSize.x) / 2f;
+                var halfZ = (buildingSize.z) / 2f;
             
                 colonist.transform.position = new Vector3(
-                    building.transform.position.x - halfX + Random.Range(0, buildingSize.x - 1f), 
+                    building.transform.position.x - halfX + Random.Range(0, buildingSize.x), 
                     0.72f, 
-                    building.transform.position.z - halfZ + Random.Range(0, buildingSize.z - 1f)
+                    building.transform.position.z - halfZ + Random.Range(0, buildingSize.z)
                 );
 
                 var colonistSize = colonist.GetComponent<BoxCollider>().bounds.extents;
