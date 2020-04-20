@@ -17,6 +17,8 @@ namespace Resource
         }
 
         public int Get() => _amount;
+        
+        public int GetMax() => _max;
 
         public override string ToString()
         {

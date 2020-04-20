@@ -37,6 +37,8 @@ namespace Resource
             _resources[ResourceType.Titanium].Increase(50);
             _resources[ResourceType.Food].Increase(10);
             _resources[ResourceType.O2].Increase(10);
+            
+            _resources[ResourceType.Money].Increase(1000);
 
             foreach (var image in images)
             {
