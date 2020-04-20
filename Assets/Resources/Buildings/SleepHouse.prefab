@@ -63,6 +63,7 @@ MonoBehaviour:
   maxColonists: 0
   title: 
   description: 
+  hasModal: 0
 --- !u!114 &-4896322100841842443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 3
-  amount: 5
+  amount: 4
 --- !u!64 &9105696110921409216
 MeshCollider:
   m_ObjectHideFlags: 0

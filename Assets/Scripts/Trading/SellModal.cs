@@ -7,6 +7,8 @@ namespace Trading
 {
     public class SellModal : MonoBehaviour
     {
+        private const int WubbelUbbelPrice = 21;
+        
         public TextMeshProUGUI description;
         public Button confirmButton;
 
@@ -32,9 +34,9 @@ namespace Trading
             }
             
             var totalWubbel = ResourceManager.Instance.ForType(ResourceType.WubbelUbbelOre).Get();
-            var totalMoney = totalWubbel * 15;
+            var totalMoney = totalWubbel * WubbelUbbelPrice;
             
-            description.text = $"Sell {totalWubbel} wubbelubbel ore for\n<b>{totalMoney}</b> money?";
+            description.text = $"Sell {totalWubbel} wubbelubbel ore for<br>$<b>{totalMoney}</b>?";
 
             confirmButton.interactable = totalWubbel > 0;
         }
@@ -42,7 +44,7 @@ namespace Trading
         public void Sell()
         {
             var totalWubbel = ResourceManager.Instance.ForType(ResourceType.WubbelUbbelOre).Get();
-            var totalMoney = totalWubbel * 15;
+            var totalMoney = totalWubbel * WubbelUbbelPrice;
 
             ResourceManager.Instance.ForType(ResourceType.WubbelUbbelOre).Decrease(totalWubbel);
             ResourceManager.Instance.ForType(ResourceType.Money).Increase(totalMoney);
