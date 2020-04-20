@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Buildings;
+using Resource;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,6 +9,9 @@ namespace Colonists
 {
     public class Colonist : MonoBehaviour
     {
+        private const float O2Interval = 3;
+        private const float FoodInterval = 10;
+        
         private List<Building> _checked = new List<Building>();
         private Building _currentBuilding;
 
@@ -16,6 +20,9 @@ namespace Colonists
 
         private float _stateTimer;
         private Vector2? _targetPosition = null;
+        private float _o2Timer = O2Interval;
+        private float _foodTimer = FoodInterval;
+        
         public Animator animator;
         public LayerMask buildingMask;
         public Action<Colonist> taskCompleted;
@@ -56,6 +63,21 @@ namespace Colonists
 
         private void Update()
         {
+            _o2Timer -= Time.deltaTime;
+            _foodTimer -= Time.deltaTime;
+
+            if (_o2Timer <= 0)
+            {
+                ResourceManager.Instance.ForType(ResourceType.O2).Decrease(1);
+                _o2Timer = O2Interval;
+            }
+            
+            if (_foodTimer <= 0)
+            {
+                ResourceManager.Instance.ForType(ResourceType.Food).Decrease(1);
+                _foodTimer = FoodInterval;
+            }
+
             switch (_state)
             {
                 case ColonistState.Idle:

@@ -506,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 2
   interval: 2
-  amount: 1
+  amount: 3
 --- !u!114 &-1336084103028220784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,5 +520,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
-  interval: 10
-  amount: 1
+  interval: 6
+  amount: 2

@@ -4,6 +4,8 @@ namespace Buildings
     {
         Mine,
         SleepQuarter,
-        Garden
+        Garden,
+        LandingPlatform,
+        Tunnel
     }
 }
