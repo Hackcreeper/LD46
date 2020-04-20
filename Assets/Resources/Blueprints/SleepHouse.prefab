@@ -61,7 +61,7 @@ MonoBehaviour:
   offsetY: 2.5
   building: {fileID: 1385097131511950966, guid: a01121f36fbf44348854bd03c07ca1be,
     type: 3}
-  costs: 15
+  costs: 150
 --- !u!1001 &523785567564398980
 PrefabInstance:
   m_ObjectHideFlags: 0

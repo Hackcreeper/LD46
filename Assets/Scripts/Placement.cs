@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Buildings;
+using Colonists;
 using Resource;
 using TMPro;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +27,7 @@ public class Placement : MonoBehaviour
     private bool _active = false;
     private bool _canPlace = false;
     private string _reason = "";
+    private bool _isFirst = true;
     
     private Blueprint _blueprint;
     private Dictionary<Building, Transform> _tunnels = new Dictionary<Building, Transform>();
@@ -69,7 +72,7 @@ public class Placement : MonoBehaviour
 
         var building = _blueprint.Spawn();
         BuildingRegistry.Instance.Register(building);
-        
+
         ResourceManager.Instance.ForType(ResourceType.Titanium).Decrease(_blueprint.costs);
 
         foreach (var tunnel in _tunnels)

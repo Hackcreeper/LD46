@@ -29,18 +29,13 @@ namespace Resource
 
             _resources.Add(ResourceType.Money, new Resource(0, true));
             _resources.Add(ResourceType.Titanium, new Resource(0, true));
-            _resources.Add(ResourceType.Food, new Resource(10));
-            _resources.Add(ResourceType.O2, new Resource(10));
-            _resources.Add(ResourceType.Colonists, new Resource(4));
+            _resources.Add(ResourceType.Food, new Resource(0));
+            _resources.Add(ResourceType.O2, new Resource(0));
+            _resources.Add(ResourceType.Colonists, new Resource(0));
             _resources.Add(ResourceType.WubbelUbbelOre, new Resource(0, true));
 
-            _resources[ResourceType.Titanium].Increase(50);
-            _resources[ResourceType.Food].Increase(10);
-            _resources[ResourceType.O2].Increase(10);
+            _resources[ResourceType.Titanium].Increase(350);
             
-            // TODO: Remove in future
-            _resources[ResourceType.Money].Increase(1000);
-
             foreach (var image in images)
             {
                 _sprites.Add(image.resourceType, image.sprite);
