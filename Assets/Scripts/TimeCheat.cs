@@ -1,22 +1,30 @@
-using System;
+using TMPro;
 using UnityEngine;
 
 public class TimeCheat : MonoBehaviour
 {
-    public int currentFactor = 1;
+    public static TimeCheat Instance;
 
-    private void Update()
+    public TextMeshProUGUI buttonText;
+
+    private bool _fastMode;
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            currentFactor *= 2;
-            Time.timeScale = currentFactor;
-        }
-        
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            currentFactor = Mathf.Clamp(currentFactor / 2, 1, Int32.MaxValue);
-            Time.timeScale = currentFactor;
-        }
+        Instance = this;
     }
+
+    public void Toggle()
+    {
+        _fastMode = !_fastMode;
+        Time.timeScale = _fastMode ? 2 : 1;
+        buttonText.text = _fastMode ? ">>" : ">";
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = _fastMode ? 2 : 1;
+    }
+
+    public bool IsFastMode() => _fastMode;
 }

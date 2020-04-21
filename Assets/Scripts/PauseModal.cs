@@ -22,9 +22,9 @@ public class PauseModal : MonoBehaviour
 
         if (_paused)
         {
-            Time.timeScale = 1;
             _paused = false;
             gameObject.SetActive(false);
+            TimeCheat.Instance.Resume();
             
             return;
         }

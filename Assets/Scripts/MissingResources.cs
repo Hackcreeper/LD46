@@ -1,8 +1,5 @@
-using System;
-using Resource;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MissingResources : MonoBehaviour
 {

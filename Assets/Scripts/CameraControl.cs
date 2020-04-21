@@ -22,10 +22,11 @@ public class CameraControl : MonoBehaviour
     private void Update()
     {
         _mouseVelocity = Vector2.zero;
-        return;
 
         var mouse = Input.mousePosition;
 
+        return;
+        
         if (mouse.x < MouseOffset)
         {
             _mouseVelocity.x = -1;
@@ -54,7 +55,7 @@ public class CameraControl : MonoBehaviour
 
         position = Vector3.Lerp(
             position,
-            position + new Vector3(velocity.x, 0, velocity.y) * 40,
+            position + new Vector3(velocity.x, 0, velocity.y) * (TimeCheat.Instance.IsFastMode() ? 20 : 40),
             Time.fixedDeltaTime
         );
 
