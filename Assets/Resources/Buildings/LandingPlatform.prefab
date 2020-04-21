@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 6
-  amount: 400
+  amount: 350
 --- !u!114 &7146535155337226460
 MonoBehaviour:
   m_ObjectHideFlags: 0
