@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 7701155766944907247}
   - component: {fileID: 940691704891605950}
   - component: {fileID: -4896322100841842443}
+  - component: {fileID: -561351836728343106}
   m_Layer: 0
   m_Name: SleepHouse
   m_TagString: Untagged
@@ -183,7 +184,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 3
-  amount: 4
+  amount: 50
+--- !u!114 &-561351836728343106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385097131511950966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e80b7e57b224d478d6da455b709086d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 3
+  amount: 46
 --- !u!64 &9105696110921409216
 MeshCollider:
   m_ObjectHideFlags: 0
