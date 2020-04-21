@@ -22,6 +22,8 @@ public class Placement : MonoBehaviour
     public GameObject reasonWrapper;
     public TextMeshProUGUI reasonText;
 
+    public AudioSource placeSource;
+
     private bool _active = false;
     private bool _canPlace = false;
     private string _reason = "";
@@ -70,6 +72,8 @@ public class Placement : MonoBehaviour
 
         var building = _blueprint.Spawn();
         BuildingRegistry.Instance.Register(building);
+
+        placeSource.Play();
 
         ResourceManager.Instance.ForType(ResourceType.Titanium).Decrease(_blueprint.costs);
 

@@ -33,6 +33,14 @@ namespace Colonists
             AssignRandomSleepQuarter(component);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                MissingResources.Instance.Died("markus", 0, 0);
+            }
+        }
+
         private void AssignRandomSleepQuarter(Colonist colonist)
         {
             var building = BuildingRegistry.Instance.GetRandomSleepingQuarter();

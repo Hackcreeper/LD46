@@ -14,7 +14,8 @@ public class MissingResources : MonoBehaviour
     public GameObject energyWarning;
     
     public TextMeshProUGUI diedText;
-    
+    public AudioSource diedSource;
+
     private int _reportedO2 = 0;
     private int _reportedFood = 0;
     private int _reportedEnergy = 0;
@@ -80,6 +81,8 @@ public class MissingResources : MonoBehaviour
         _reportedFood -= food;
         _reportedO2 -= o2;
 
+        diedSource.Play();
+        
         _someoneDied = true;
         _deadTimer = 10f;
     }
@@ -96,7 +99,7 @@ public class MissingResources : MonoBehaviour
         {
             return;
         }
-
+        
         _someoneDied = false;
         diedWarning.SetActive(false);
     }

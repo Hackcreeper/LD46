@@ -11,6 +11,7 @@ namespace Trading
         
         public TextMeshProUGUI description;
         public Button confirmButton;
+        public AudioSource source;
 
         private bool _open;
 
@@ -54,6 +55,8 @@ namespace Trading
             ResourceManager.Instance.ForType(ResourceType.WubbelUbbelOre).Decrease(totalWubbel);
             ResourceManager.Instance.ForType(ResourceType.Money).Increase(totalMoney);
 
+            source.Play();
+            
             Close();
         }
     }

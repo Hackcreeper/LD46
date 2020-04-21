@@ -29,9 +29,11 @@ namespace Trading
         public TextMeshProUGUI errorText;
         public Button buyButton;
 
+        public AudioSource source;
+
         private void Start()
         {
-            Recalculate(); // Set everything to zero
+            Recalculate();
         }
 
         public void Open()
@@ -127,6 +129,8 @@ namespace Trading
             );
 
             Trader.Instance.Reserve(_buyTitanium, _buyColonists);
+            source.Play();
+            
             Close();
         }
     }
